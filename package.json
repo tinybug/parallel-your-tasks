@@ -1,0 +1,26 @@
+{
+  "name": "parallel-your-tasks",
+  "version": "1.0.0",
+  "description": "parallel you tasks",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha --no-timeouts ./test | bunyan",
+    "example": "node example/picture-downloader/main.js | bunyan",
+    "lint": "jscs ."
+  },
+  "author": "jesse liu",
+  "license": "MIT",
+  "jscsConfig": {
+    "preset": "airbnb",
+    "requireShorthandArrowFunctions": null,
+    "excludeFiles": ["node_modules/**/*", "example/picture-downloader/node_modules/**/*"]
+  },
+  "dependencies": {
+    "assert-plus": "1.0.0",
+    "bunyan": "1.8.1",
+    "lodash": "4.13.1"
+  },
+  "devDependencies": {
+    "jscs": "3.0.4"
+  }
+}
