@@ -12,6 +12,8 @@ function PYT() {
   }
 
   EventEmitter.call(this);
+
+  this._handleWork();
 }
 
 util.inherits(PYT, EventEmitter);
@@ -40,7 +42,7 @@ PYT.prototype._checkDone = function () {
   return true;
 };
 
-PYT.prototype.start = function () {
+PYT.prototype._handleWork = function () {
   this.on('next', (taskId) => {
     if (this._checkDone()) {
       logger.info('all tasks done');
@@ -82,7 +84,9 @@ PYT.prototype.start = function () {
 
     this.tasksReport[taskId].running = true;
   });
+};
 
+PYT.prototype.start = function () {
   for (let i = 0; i < this.parallelCount; ++i) {
     this.emit('next', i);
   }
